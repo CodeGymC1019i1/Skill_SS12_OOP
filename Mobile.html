@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let iphone = new Mobile("Iphone 11 Pro Max");
+    let samsung = new Mobile("SamSung Note 10 Plus");
+    iphone.writeMsg("Hello, Im phone from Apple");
+    iphone.sendMsg(samsung);
+    console.log(iphone)
+
+
+    let Mobile = function () {
+        this.name = name;
+        this.msg = "";
+        this.inbox = [];
+        this.outbox = [];
+
+        this.writeMsg = function(value){
+            this.msg = value;
+        };
+        this.sendMsg = function(mobile){
+            this.outbox.push(this.msg);
+            mobile.reciveMsg(this.msg);
+        };
+        this.reciveMsg = function (msg) {
+            this.inbox.push(msg);
+        }
+    }
+</script>
+</body>
+</html>
