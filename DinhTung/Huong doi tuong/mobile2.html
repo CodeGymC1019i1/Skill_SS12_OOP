@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Mobile = function (name) {
+        this.name = name ;
+        this.Msg = '';
+        this.inBox = [];
+        this.outBox = [];
+        this.texting = function (content) {
+            this.Msg += content;
+        }
+        this.seeInbox = function () {
+            document.write('Inbox: ' + this.inBox)
+        }
+        this.sendMsg = function (receiver,content) {
+            this.outBox.push(this.Msg);
+            receiver.receiveMsg(this,this.Msg);
+            this.Msg = '';
+        }    
+        this.receiveMsg = function (sender,contentMsg ) {
+            this.inBox.push(contentMsg);
+            alert("Co tin nhan moi tu: " + sender.name );
+        }
+
+
+    }
+    let Nokia = new Mobile('Nokia');
+    let Iphone = new Mobile('Iphone');
+    Nokia.texting('di choi ko')
+    Nokia.sendMsg(Iphone);
+    Iphone.seeInbox();
+</script>
+</body>
+</html>
