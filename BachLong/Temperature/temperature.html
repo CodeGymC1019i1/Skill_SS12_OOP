@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let Temperature = function (doC) {
+
+        this.DoC = doC;
+        this.getdoC = function () {
+            return doC;
+        };
+
+        this.getDoF = function () {
+            return doC * 1.8 - 32
+        };
+        this.getDoKevin = function () {
+            return doC + 273.15
+        }
+
+
+    };
+    let temperature = new Temperature (20);
+    let doC = temperature.getdoC();
+    let doF = temperature.getDoF();
+    let dokevin = temperature.getDoKevin();
+
+    alert("do C: "+ doC + " do F: " + doF  + " do Kenvin: " + dokevin )
+
+
+</script>
+</body>
+</html>
