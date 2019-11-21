@@ -8,39 +8,45 @@
 <canvas id="myCanvas"></canvas>
 
 <script>
+
     let Rectangle = function (width, height) {
         this.width = width;
         this.height = height;
+
         this.getWidth = function () {
             return width
         };
+
         this.getHeight = function () {
             return height
         };
+
         this.getArea = function () {
             return width * height
         };
+
         this.getPerimeter = function () {
-            return (width + height) * 2
+            return (width + height)*2
         }
+
         this.drawRectangle = function () {
-            let ctx = document.getElementById('myCanvas').getContext('2d');
-            ctx.fillStyle = 'red';
-            ctx.fillRect(0, 0, this.width, this.height);
+            let ctx = document.getElementById("myCanvas").getContext('2d')
+            ctx.fillStyle = 'rgd';
+            ctx.fillRect(0,0,width, heigth)
+
         }
+
+
     };
 
-    let retangle = new Rectangle(5,10);
-    let width = retangle.getWidth();
-    let height = retangle.getHeight();
-    let perimeter = retangle.getPerimeter();
-    let area = retangle.getArea();
+    let rectangle = new Rectangle(100,200);
+    let width = rectangle.getWidth();
+    let heigth = rectangle.getHeight();
+    let area = rectangle.getArea();
+    let perimeter = rectangle.getPerimeter();
 
-    alert('width: ' + width + ';height: ' +height + ';perimeter: '+ perimeter +
-    '; Area: '+area);
-
-    let rect1 = new Rectangle(500, 700);
-    rect1.drawRectangle();
+    alert("width: "+ width + "height: " + heigth + "Area: " + area + "Perimeter: " + perimeter )
+    rectangle.drawRectangle();
 </script>
 </body>
 </html>
