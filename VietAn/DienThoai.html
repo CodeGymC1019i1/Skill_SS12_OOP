@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="mobile">
+        <div class="name" id="SamSung-Name">name</div>
+        <textarea id="SamSung-Inbox" class="inbox" disabled placeholder="Inbox"></textarea>
+        <textarea id="SamSung-Outbox" class="outbox" disabled placeholder="Outbox"></textarea>
+        <input class="msg" placeholder="message......." oninput="SamSung.writeMsg()">
+        <button type="button" onclick="SamSung.sendMsg(SamSung,Iphone)">Send</button>
+    </div>
+    <div class="mobile">
+        <div class="name" id="Iphone-Name">name</div>
+        <textarea id="Iphone-Inbox" class="inbox" disabled placeholder="Inbox"></textarea>
+        <textarea id="Iphone-Outbox" class="outbox" disabled placeholder="Outbox"></textarea>
+        <input class="msg" placeholder="message..........">
+        <button type="button" onclick="Iphone.sendMsg(Iphone,SamSung)">Send</button>
+    </div>
+
+    <script>
+        let Mobile = function (name,type) {
+            this.name = name;
+            this.type = type;
+            this.msg = "";
+            this.inbox = [];
+            this.outbox = [];
+
+            this.writeMsg = function (value) {
+                this.msg = value;
+            };
+            this.sendMsg = function (mobile) {
+                this.outbox.push(this.msg);
+                mobile.receiveMsg(this.msg);
+                this.msg = "";
+            };
+            this.receiveMsg = function (msg) {
+                this.inbox.push(msg);
+            };
+        }
+        let Iphone = new Mobile("Iphone 11 Pro Max: ","Iphone");
+        let SamSung = new Mobile("SamSung Note 10 Plus: ","SamSung");
+        console.log(Iphone);
+        console.log(SamSung);
+        function sendMsg(mobile1,mobile2) {
+            mobile1.sendMsg(mobile2)
+            console.log(mobile1);
+            console.log(mobile2);
+            display(mobile1);
+            display(mobile2);
+        }
+        function display(mobile) {
+            document.getElementById(mobile.type + "-name").innerHTML = mobile.name;
+            document.getElementById(mobile.type + "-inbox").value = mobile.inbox;
+            document.getElementById(mobile.type + "-outbox").value = mobile.outbox;
+
+        }
+    </script>
+</body>
+</html>

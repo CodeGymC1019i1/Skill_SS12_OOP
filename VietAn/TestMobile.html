@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let MyMobile = function (name) {
+        this.name = name;
+        this.BatteryStatus = 50;
+        this.DraftingMessage = '';
+        this.Inbox = [];
+        this.Outbox = [];
+
+
+        this.texting = function (content) {
+
+            this.DraftingMessage += content;
+        };
+        this.receiveMessage = function (Sender, ContentMessage) {
+            this.Inbox.push(ContentMessage);
+            alert("Bạn có tin nhắn mới từ " + Sender.name);
+
+        };
+        this.sendMessage = function (Receiver) {
+            this.Outbox.push(this.DraftingMessage);
+            Receiver.receiveMessage(this, this.DraftingMessage);
+            this.DraftingMessage = '';
+        }
+    };
+    this.seeInbox = function () {
+        document.write('Inbox: ' + this.Inbox);
+    };
+    this.seeOutbox = function () {
+        document.write('Outbox: ' + this.Outbox);
+    };
+    let Nokia = new MyMobile('Nokia');
+    let Iphone = new MyMobile('Iphone');
+    Nokia.texting('Anh An rồi sẽ ổn thôi.');
+    Nokia.sendMessage(Iphone);
+    Iphone.seeInbox();
+</script>
+</body>
+</html>

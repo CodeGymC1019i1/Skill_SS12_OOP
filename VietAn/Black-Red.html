@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function createDesk() {
+        for (let i = 0; i < 52; i++)
+            desk.push(i);
+    }
+    let shuffle = [];
+
+    function shuffleDesk() {
+        for (i = 0; i < 52; i++) {
+            let random = Math.floor(Math.round() * desk.length);
+            shuffle.push(desk[random]);
+            desk.splice(random, 1)
+
+        }
+
+
+    }
+    let player1 = new array();
+    let player2 = new array();
+
+    function dealDesk() {
+        for (let i = 0; i < shuffle.length; i++) {
+            if (i % 2 == 0) {
+                player1.push(shuffle[i])
+            } else {
+                player2.push(shuffle[i])
+            }
+        }
+
+    }
+    let score1 = 0;
+    let score2 = 0;
+
+    function playGame() {
+        for (let i = 0; i < player1.length; i++) {
+            if (player1[i] > play2[i]) {
+                score1++;
+            } else {
+                score2++
+            }
+        }
+    }
+    function result() {
+        if (score1 > score2)
+            alert("player1 win" + player1);
+        else if (score1 < score2)
+            alert("player2 win" + player2);
+        else alert("Draw");
+    }
+</script>
+</body>
+</html>

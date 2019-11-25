@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Đơn Giản</title>
+</head>
+<body>
+<script>
+    let mobile = function (name) {
+        this.Name = name;
+        this.msg = "";
+        this.inbox = [];
+        this.outbox = [];
+
+        this.writeMsg = function (value) {
+            this.msg = value;
+        };
+        this.seeInbox = function () {
+            document.write('Inbox:' + this.inbox);
+
+        };
+
+        this.sendMsg = function (Receiver) {
+
+            this.outbox.push(this.msg);
+            Receiver.receiveMessage(this.msg);
+            this.msg = "";
+        };
+        this.receiveMsg = function (sender, contenMsg) {
+            this.inbox.push(contenMsg);
+            alert("Có Tin Nhắn Mới Từ: " + sender.name);
+
+        }
+
+    };
+    let Nokia = new mobile('Nokia');
+    let Iphone = new mobile('Iphone');
+    Nokia.writeMsg('hello');
+    Nokia.sendMsg(Iphone);
+    Iphone.seeInbox();
+
+</script>
+</body>
+</html>
