@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            text-align: center
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<p id="table"></p>
+
+<script>
+    let status = "x";
+
+    function drawBoard(N) {
+        let string;
+        string = "<table border='1px solid #999' cellpadding='3px' >";
+        for (let i = 0; i < N; i++) {
+            string += "<tr>";
+            for (let j = 0; j < N; j++) {
+                string += "<td id='id" + i + j + " ' onclick='displayXO(id," + i + "," + j + ");'></td>"
+            }
+            string += "</tr>";
+        }
+        string += "</table>";
+        document.getElementById('table').innerHTML = string
+    }
+
+    function displayXO(idOfCell, i, j) {
+//Kiểm tra nếu phần tử rống thì mới cho đánh x o
+
+        if (document.getElementById(idOfCell).innerHTML == "") {
+            document.getElementById(idOfCell).innerHTML = status;
+            if (status == "x") {
+
+                status = "o";
+            } else {
+                status = "x";
+            }
+
+        }
+
+        checkWin(i, j);
+
+    }
+
+    function checkWin(i, j) {
+        debugger
+        let count = 1;
+        let value =document.getElementById("id"+i+j).innerHTML;
+        //Xet Win theo hang
+        while (document.getElementById("id" + i + (j + 1)).innerHTML == value) {
+            count++;
+            j++;
+            if (count == 5) {
+                alert('Win')
+            }
+            return true;
+            debugger
+        }
+
+        // while (document.getElementById("id" + i + (j - 1)).innerHTML == value) {
+        //     count++;
+        //     j--;
+        //     if (count == 5) {
+        //         alert('Win')
+        //     }
+        //     return true;
+        // }
+        //
+        // //Xet Win theo cot
+        // while (document.getElementById("id" + (i + 1) + j).innerHTML == value) {
+        //     count++;
+        //     i++;
+        //     if (count == 5) {
+        //         alert('Win')
+        //     }
+        //     return true;
+        // }
+        //
+        // while (document.getElementById("id" + (i - 1) + j).innerHTML == value) {
+        //     count++;
+        //     i--;
+        //     if (count == 5) {
+        //         alert('Win')
+        //     }
+        //     return true;
+        // }
+
+
+    }
+
+    drawBoard(9)
+
+</script>
+</body>
+</html>
